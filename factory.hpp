@@ -9,6 +9,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cctype>
+#include "div.hpp"
+#include "pow.hpp"
+#include "sub.hpp"
+#include "add.hpp"
+#include "base.hpp"
+#include "mult.hpp"
+#include "op.hpp"
 
 using namespace std;
 class Base;
