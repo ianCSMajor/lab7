@@ -15,6 +15,22 @@ using namespace std;
 //test cases should be removed from the final version of the main function
 int main (int argv, char** argc){
 
+  Factory* f = new Factory();
+  Base* result = f->parse(test_val, 11);
+
+  string reslutStr= result->stringify();
+  double resultDbl= result->evaluate();
+
+
+
+  if (result == nullptr){
+    cout << "No Expresion Set" << endl;
+  }
+  else{
+    cout << "Expression: " << reslutStr << endl;
+    cout << "Result: " << resultDbl << endl;
+  }
+
 
 
 
