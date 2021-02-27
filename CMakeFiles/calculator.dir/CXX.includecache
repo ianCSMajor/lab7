@@ -13,6 +13,8 @@ iostream
 -
 string
 -
+base.hpp
+/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 string
@@ -73,24 +75,20 @@ op.hpp
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/op.hpp
 
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/mult.hpp
-op.hpp
-/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/op.hpp
-iostream
--
-string
--
+base.hpp
+/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/op.hpp
 base.hpp
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/pow.hpp
+base.hpp
+/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 math.h
 -
-op.hpp
-/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/op.hpp
 
 /home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/sub.hpp
-op.hpp
-/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/op.hpp
+base.hpp
+/home/csmajs/rlumb001/lab-07---factory-pattern-klam073-ioh012-lab7/base.hpp
 

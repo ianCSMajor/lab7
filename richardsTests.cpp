@@ -35,7 +35,7 @@ TEST(FactorySuite, everyOperation) {
  
 
 
-  EXPECT_EQ("3 ** 3", result->stringify());
+  EXPECT_EQ("3.000000 ** 3.000000", result->stringify());
   EXPECT_EQ(27, result->evaluate());
 }
 
