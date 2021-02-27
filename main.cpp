@@ -18,22 +18,23 @@ using namespace std;
 int main (int argv, char** argc){
 
 //----------------------Test Cases----------------------------- 
-  char* test_val[11]; 
-  test_val[0] = "5"; 
-  test_val[1] = "+"; 
-  test_val[2] = "6"; 
-  test_val[3] = "-"; 
-  test_val[4] = "7"; 
-  test_val[5] = "*";
-  test_val[6] = "3";
-  test_val[7] = "/";
-  test_val[8] = "4";
-  test_val[9] = "**";
-  test_val[10] = "3";
+  // char* test_val[12]; 
+  // test_val[0] = "./calculator"; 
+  // test_val[1] = "5"; 
+  // test_val[2] = "+"; 
+  // test_val[3] = "6"; 
+  // test_val[4] = "-"; 
+  // test_val[5] = "7"; 
+  // test_val[6] = "*";
+  // test_val[7] = "3";
+  // test_val[8] = "/";
+  // test_val[9] = "4";
+  // test_val[10] = "**";
+  // test_val[11] = "3";
 //------------------------------------------------------------  
 
   Factory* fac = new Factory();
-  Base* result = fac->parse(test_val, 11);
+  Base* result = fac->parse(argc, argv);
 
   if (result == nullptr){
     cout << "Invalid Input" << endl;
@@ -46,4 +47,3 @@ int main (int argv, char** argc){
 
 return 0;
 }
-

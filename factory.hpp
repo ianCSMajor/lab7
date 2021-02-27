@@ -1,7 +1,6 @@
 #ifndef __FACTORY_HPP__
 #define __FACTORY_HPP__
 
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,11 +23,15 @@ using namespace std;
 struct Factory {
   Factory(){ }; 
   Base* parse(char** strInput, int length){
-    string strArr[length];
+    string strArr[length-1];
     Base* composite;
 
-    for(int i = 0; i< length; i++){
-      strArr[i]= static_cast<string>(strInput[i]); 
+    for(int i = 1; i< length; i++){
+      strArr[i-1]= static_cast<string>(strInput[i]); 
+    }
+
+    for(int i = 0; i< length-1; i++){
+      //strArr[i]= static_cast<string>(strInput[i]); 
       if(i%2==1){
         if(!(strArr[i]=="+" || strArr[i]=="-" || strArr[i]=="*" || strArr[i]=="/" || strArr[i]=="**")){
           return nullptr;

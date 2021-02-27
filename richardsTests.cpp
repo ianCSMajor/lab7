@@ -13,6 +13,19 @@
 #include "op.hpp"
 using namespace std;
 
+TEST(FactorySuite, addition) {
+  char* test_val[3]; 
+  test_val[0] = "5"; 
+  test_val[1] = "+"; 
+  test_val[2] = "6"; 
+
+  Factory* fac = new Factory();
+  Base* result = fac->parse(test_val, 3);
+
+  EXPECT_EQ("5.000000 + 6.000000", result->stringify());
+  EXPECT_EQ(11, result->evaluate());
+}
+
 
 
 TEST(FactorySuite, everyOperation) {
@@ -31,9 +44,6 @@ TEST(FactorySuite, everyOperation) {
 
   Factory* fac = new Factory();
   Base* result = fac->parse(test_val, 11);
-
- 
-
 
   EXPECT_EQ("3.000000 ** 3.000000", result->stringify());
   EXPECT_EQ(27, result->evaluate());
