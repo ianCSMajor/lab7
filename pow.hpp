@@ -1,32 +1,21 @@
-#ifndef _POW_HPP_
-#define _POW_HPP_
 
+#ifndef __POW_HPP__
+#define __POW_HPP__
+
+#include "base.hpp"
 #include <math.h>
-#include "op.hpp"
-using namespace std; 
-class Pow : public Base
-{
-	public: 
-		Pow( Base* left, Base* right):Base()	
-		{
-			lstring = left -> stringify();
-			rstring = right -> stringify();
-			ldouble = left -> evaluate();
-			rdouble = right -> evaluate();
-		}
-		virtual double evaluate()
-		{
-			return(pow(ldouble, rdouble));
-		}
-		virtual string stringify()
-		{
-			return(lstring + " ** " + rstring);
-		}
-	private:
-		string lstring;
-		string rstring;
-		double ldouble;
-		double rdouble;
+
+class Pow : public Base {
+    public:
+	Pow(Base* baseVal, Base* expVal) : Base(), base(baseVal), exp(expVal) {}
+	virtual double evaluate() {pow(base -> evaluate(), exp -> evaluate());}
+	virtual std::string stringify() {
+		return base -> stringify() + " ** " + exp -> stringify();
+	}
+    private:
+	Base* base;
+	Base* exp;
 };
 
 #endif
+

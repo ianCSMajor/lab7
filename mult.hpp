@@ -1,25 +1,21 @@
-#ifndef __MULT_HPP__
-#define __MULT_HPP__
 
-#include "op.hpp"
-#include <iostream>
-#include <string>
+#ifndef MULT_HPP
+#define MULT_HPP
+
+#include "base.hpp"
 
 class Mult : public Base {
     public:
-   Mult( Base* left, Base* right) : Base() {
-   lnum = left->evaluate();
-   rnum = right->evaluate();
-   lhs = left->stringify();
-   rhs = right->stringify();
-}
-      virtual double evaluate () {return (lnum * rnum) ;}
-      virtual std::string stringify() {return lhs + " * " + rhs;}
-  private:
-    std::string lhs;
-    std::string rhs;
-    double lnum;
-    double rnum;
+        Mult(Base* initVal, Base* multVal) : Base(), val1(initVal), val2(multVal) {}
+        virtual double evaluate() {return val1 -> evaluate() * val2 -> evaluate(); }
+        virtual std::string stringify() {
+            return val1 -> stringify() + " * " + val2 -> stringify();
+        }
+    private:
+        Base* val1;
+        Base* val2;
 };
 
 #endif
+
+

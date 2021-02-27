@@ -10,6 +10,7 @@ ADD_EXECUTABLE(calculator
 
 ADD_EXECUTABLE(test
     richardsTests.cpp
+
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
