@@ -28,6 +28,15 @@ TEST(FactorySuite, addition) {
   EXPECT_EQ("5+6", fac->textify());
 }
 
+TEST(FactorySuite, InvalidInput) { 	
+char* test_val[3]; 	
+test_val[0] = "./calculator"; 	
+test_val[1] = "hello"; 	
+test_val[2] = "world"; 	
+Factory* fac = new Factory(); 	
+Base* result = fac->parse(test_val, 3); 	
+ASSERT_TRUE(result == nullptr); 
+}
 
 
 TEST(FactorySuite, everyOperation) {
