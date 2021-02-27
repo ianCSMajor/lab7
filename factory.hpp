@@ -90,10 +90,12 @@ struct Factory {
 
 
 
-  void textify(){
+  string textify(){
+    string text;
     for(string s : output){
-      cout<<s;
+      text += s;
     }
+    return text;
   }
 
 

@@ -14,39 +14,43 @@
 using namespace std;
 
 TEST(FactorySuite, addition) {
-  char* test_val[3]; 
-  test_val[0] = "5"; 
-  test_val[1] = "+"; 
-  test_val[2] = "6"; 
+  char* test_val[4];
+  test_val[0] = "./calculator"; 
+  test_val[1] = "5"; 
+  test_val[2] = "+"; 
+  test_val[3] = "6"; 
 
   Factory* fac = new Factory();
-  Base* result = fac->parse(test_val, 3);
+  Base* result = fac->parse(test_val, 4);
 
   EXPECT_EQ("5.000000 + 6.000000", result->stringify());
   EXPECT_EQ(11, result->evaluate());
+  EXPECT_EQ("5+6", fac->textify());
 }
 
 
 
 TEST(FactorySuite, everyOperation) {
-  char* test_val[11]; 
-  test_val[0] = "5"; 
-  test_val[1] = "+"; 
-  test_val[2] = "6"; 
-  test_val[3] = "-"; 
-  test_val[4] = "7"; 
-  test_val[5] = "*";
-  test_val[6] = "3";
-  test_val[7] = "/";
-  test_val[8] = "4";
-  test_val[9] = "**";
-  test_val[10] = "3";
+  char* test_val[12];
+  test_val[0] = "./calculator";
+  test_val[1] = "5"; 
+  test_val[2] = "+"; 
+  test_val[3] = "6"; 
+  test_val[4] = "-"; 
+  test_val[5] = "7"; 
+  test_val[6] = "*";
+  test_val[7] = "3";
+  test_val[8] = "/";
+  test_val[9] = "4";
+  test_val[10] = "**";
+  test_val[11] = "3";
 
   Factory* fac = new Factory();
-  Base* result = fac->parse(test_val, 11);
+  Base* result = fac->parse(test_val, 12);
 
   EXPECT_EQ("3.000000 ** 3.000000", result->stringify());
   EXPECT_EQ(27, result->evaluate());
+  EXPECT_EQ("5+6-7*3/4**3", fac->textify());
 }
 
 
