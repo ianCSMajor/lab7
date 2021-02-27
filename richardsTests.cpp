@@ -32,8 +32,7 @@ TEST(FactorySuite, everyOperation) {
   Factory* fac = new Factory();
   Base* result = fac->parse(test_val, 11);
 
-  // string resultStr = test->stringify();
-  // double resultDbl = test->evaluate();
+ 
 
 
   EXPECT_EQ("3 ** 3", test->stringify());
