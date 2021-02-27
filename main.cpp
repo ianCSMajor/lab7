@@ -17,7 +17,7 @@ using namespace std;
 //test cases should be removed from the final version of the main function
 int main (int argv, char** argc){
 
-//----------------------Test Case----------------------------- 
+//----------------------Test Cases----------------------------- 
   char* test_val[11]; 
   test_val[0] = "5"; 
   test_val[1] = "+"; 
@@ -32,16 +32,16 @@ int main (int argv, char** argc){
   test_val[10] = "3";
 //------------------------------------------------------------  
 
-  Factory* f = new Factory();
-  Base* result = f->parse(test_val, 11);
+  Factory* fac = new Factory();
+  Base* result = fac->parse(test_val, 11);
 
-  string reslutStr= result->stringify();
-  double resultDbl= result->evaluate();
-
-    cout << "Expression: " << reslutStr << endl;
-    cout << "Result: " << resultDbl << endl;
-  
-
+  if (result == nullptr){
+    cout << "Invalid Input" << endl;
+  }
+  else{
+    cout << "Expression: " << result->stringify() << endl;
+    cout << "Result: " << result->evaluate() << endl;
+  }
 
 
 return 0;
