@@ -1,6 +1,10 @@
 #ifndef __ADD_HPP__
 #define __ADD_HPP__
 
+
+#include "op.hpp"
+#include <iostream>
+#include <string>
 #include "base.hpp"
 
 class Add : public Base {
@@ -15,3 +19,4 @@ class Add : public Base {
 	Base* val2;
 };
 #endif
+

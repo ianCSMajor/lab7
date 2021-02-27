@@ -1,3 +1,4 @@
+
 #ifndef MULT_HPP
 #define MULT_HPP
 
@@ -16,4 +17,5 @@ class Mult : public Base {
 };
 
 #endif
+
 

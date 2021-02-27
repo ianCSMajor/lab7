@@ -1,3 +1,4 @@
+
 #ifndef __POW_HPP__
 #define __POW_HPP__
 
@@ -17,3 +18,4 @@ class Pow : public Base {
 };
 
 #endif
+

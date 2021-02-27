@@ -1,94 +1,88 @@
 #ifndef __FACTORY_HPP__
 #define __FACTORY_HPP__
 
-#include "base.hpp"
+
 #include <iostream>
-#include <cstring>
-#include <string>
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <cctype>
+#include <cstring>
+#include <string>
+#include <array>
+#include <ctype.h>
 
+//You have to include these classes/files form lab 3:
+#include "base.hpp"
+#include "div.hpp"
+#include "pow.hpp"
+#include "sub.hpp"
+#include "add.hpp"
+#include "mult.hpp"
+#include "op.hpp"
 using namespace std;
-class Base;
 
-class Factory {
-    private:
-	bool isNumber(const string& input) {
-    	    if(input == ".") return false;
-   	    unsigned j = 0;
-    	    if(input.at(0) == '-') {
-        	j++;
-    	    }
-    	    int dotCount = 0;
-    	    for(unsigned i = j; i < input.size(); i++) {
-        	if(input.at(i) == '.') {
-            	    dotCount++;
-        	}
-            else if((input.at(i) < '0' || input.at(i) > '9') && input.at(i) != '.') {
-            	return false;
-            }
-            if(dotCount > 1) return false;
-    	    }
-    	    return true;
- 	}
-    public:
-	Factory() {};
-	Base* parse(char** input, int length) {	  
-	    if(length == 3 || length%2!=0) {
-		return nullptr;
-	    }
-	    Base* first = nullptr;
-	    Base* second = nullptr;
-            string stringIn = static_cast<string>(input[1]);
-	    string stringIn2 = static_cast<string>(input[3]);
-	    if(isNumber(stringIn) && isNumber(stringIn2)){
-		first = new Op(stod(stringIn));
-		second = new Op(stod(stringIn2));
-	    }
-	    else {
-		return nullptr;
-	    }
-	    Base* initial = nullptr;
-	    string inputString = static_cast<string>(input[2]);
-	    if(inputString == "+")
-		 initial = new Add(first, second);
-	    else if(inputString == "-")
-		 initial = new Sub(first, second);
-	    else if(inputString == "\*")
-                 initial = new Mult(first, second);
-	    else if(inputString == "/")
-                 initial = new Div(first, second);
-	    else if(inputString == "\*\*")
-                 initial = new Pow(first, second);
-	    else {
-		return nullptr;	
-	    }
-	    for(int i = 4; i + 1 < length; i+=2){
-		if(isNumber(static_cast<string>(input[i+1])))
-		{
-		    inputString = static_cast<string>(input[i]);
-		    if(inputString == "+")
-                	 initial = new Add(initial, new Op(stod(input[i+1])));
-		    else if(inputString == "-")
-                	 initial = new Sub(initial, new Op(stod(input[i+1])));
-          	    else if(inputString == "*")
-                	 initial = new Mult(initial, new Op(stod(input[i+1])));
-          	    else if(inputString == "/")
-                	 initial = new Div(initial, new Op(stod(input[i+1])));
-           	    else if(inputString == "**")
-                 	 initial = new Pow(initial, new Op(stod(input[i+1])));
-		    else{
-			return nullptr;	
-		    }
-		}
-		else {
-		    return nullptr;
-		}
-	    } 
-	    return initial;
-	}
+
+struct Factory {
+  Factory(){ }; 
+  Base* parse(char** strInput, int length){
+    string strArr[length];
+    Base* composite;
+
+    for(int i = 0; i< length; i++){
+      strArr[i]= static_cast<string>(strInput[i]); 
+      if(i%2==1){
+        if(!(strArr[i]=="+" || strArr[i]=="-" || strArr[i]=="*" || strArr[i]=="/" || strArr[i]=="**")){
+          return nullptr;
+        }
+      } 
+      else if(i%2==0){
+        if(  !(isdigit(strArr[i].at(0)))  ){
+          return nullptr;
+        }
+      }
+    }
+
+   
+    if( strArr[1] == "+" ){
+      composite = new Add(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
+    }
+    else if( strArr[1] == "-" ){
+      composite = new Sub(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
+    }
+    else if( strArr[1] == "*" ){
+      composite = new Mult(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
+    }
+    else if( strArr[1] == "/" ){
+      composite = new Div(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
+    }
+    else if( strArr[1] == "**" ){
+      composite = new Pow(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
+    }
+    // else{
+    //    return nullptr;
+    // }
+
+    
+    for(int i = 3; i< length; i+=2){
+      if( strArr[i] == "+" ){
+        composite = new Add(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
+      }
+      else if( strArr[i] == "-" ){
+        composite = new Sub(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
+      }
+      else if( strArr[i] == "*" ){
+        composite = new Mult(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
+      }
+      else if( strArr[i] == "/" ){
+        composite = new Div(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
+      }
+      else if( strArr[i] == "**" ){
+        composite = new Pow(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
+      }
+      // else{
+      //   return nullptr;
+      // }
+    }
+    return composite;
+  }
 };
-
 #endif
