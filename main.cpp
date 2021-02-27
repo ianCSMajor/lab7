@@ -21,18 +21,8 @@ int main (int argv, char** argc){
   string reslutStr= result->stringify();
   double resultDbl= result->evaluate();
 
-
-
-  if (result == nullptr){
-    cout << "No Expresion Set" << endl;
-  }
-  else{
-    cout << "Expression: " << reslutStr << endl;
-    cout << "Result: " << resultDbl << endl;
-  }
-
-
-
-
+  cout << "Expression: " << reslutStr << endl;
+  cout << "Result: " << resultDbl << endl;
+  
 return 0;
 }
