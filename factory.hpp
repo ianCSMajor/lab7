@@ -7,6 +7,7 @@
 #include <cstring>
 #include <string>
 #include <array>
+#include <vector>
 #include <ctype.h>
 
 //You have to include these classes/files form lab 3:
@@ -21,6 +22,9 @@ using namespace std;
 
 
 struct Factory {
+
+  vector<string> output;
+
   Factory(){ }; 
   Base* parse(char** strInput, int length){
     string strArr[length-1];
@@ -28,10 +32,11 @@ struct Factory {
 
     for(int i = 1; i< length; i++){
       strArr[i-1]= static_cast<string>(strInput[i]); 
+      output.push_back(strArr[i-1]);
+      //cout<<output[i-1];
     }
 
-    for(int i = 0; i< length-1; i++){
-      //strArr[i]= static_cast<string>(strInput[i]); 
+    for(int i = 0; i< length-1; i++){ 
       if(i%2==1){
         if(!(strArr[i]=="+" || strArr[i]=="-" || strArr[i]=="*" || strArr[i]=="/" || strArr[i]=="**")){
           return nullptr;
@@ -60,9 +65,6 @@ struct Factory {
     else if( strArr[1] == "**" ){
       composite = new Pow(new Op(stod(strArr[0])), new Op(stod(strArr[2])));
     }
-    // else{
-    //    return nullptr;
-    // }
 
     
     for(int i = 3; i< length; i+=2){
@@ -81,11 +83,20 @@ struct Factory {
       else if( strArr[i] == "**" ){
         composite = new Pow(new Op(composite->evaluate()), new Op(stod(strArr[i+1])));
       }
-      // else{
-      //   return nullptr;
-      // }
+      
     }
     return composite;
   }
+
+
+
+  void textify(){
+    for(string s : output){
+      cout<<s;
+    }
+  }
+
+
+
 };
 #endif

@@ -40,8 +40,8 @@ int main (int argv, char** argc){
     cout << "Invalid Input" << endl;
   }
   else{
-    cout << "Expression: " << result->stringify() << endl;
-    cout << "Result: " << result->evaluate() << endl;
+    cout << "Expression: "; fac->textify();
+    cout << "\nResult: " << result->evaluate() << endl;
   }
 
 
