@@ -1,14 +1,14 @@
-#ifndef _TESTS_HPP_
-#define _TESTS_HPP_
+//#ifndef _TESTS_HPP_
+//#define _TESTS_HPP_
 
 #include "gtest/gtest.h"
 #include <iostream>
 #include "factory.hpp"
 #include "add.hpp"
-#include "Sub.hpp"
+#include "sub.hpp"
 #include "mult.hpp"
-#include "Div.hpp"
-#include "Pow.hpp"
+#include "div.hpp"
+#include "pow.hpp"
 #include "base.hpp"
 #include "op.hpp"
 using namespace std;
@@ -35,8 +35,8 @@ TEST(FactorySuite, everyOperation) {
  
 
 
-  EXPECT_EQ("3 ** 3", test->stringify());
-  EXPECT_EQ(27, test->evaluate());
+  EXPECT_EQ("3 ** 3", result->stringify());
+  EXPECT_EQ(27, result->evaluate());
 }
 
 
