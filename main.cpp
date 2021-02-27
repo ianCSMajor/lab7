@@ -40,8 +40,11 @@ int main (int argv, char** argc){
     cout << "Invalid Input" << endl;
   }
   else{
-    cout << "Expression: "; fac->textify();
-    cout << "\nResult: " << result->evaluate() << endl;
+    cout<<"\n-----------------------------------"<<endl;
+    cout << "Expression: "<<fac->textify()<<endl;
+    //cout<<"Condensed Expression: "<<result->stringify()<<endl;
+    cout << "Result: " << result->evaluate() << endl;
+    cout<<"------------------------------------\n"<<endl;
   }
 
 
