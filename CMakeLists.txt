@@ -8,8 +8,8 @@ ADD_EXECUTABLE(calculator
     main.cpp
 )
 
-ADD_EXECUTABLE(test
-    test.cpp
+ADD_EXECUTABLE(richardsTests
+    richardsTests.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
