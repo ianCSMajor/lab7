@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "factory_test.hpp"
+#include "factorytest.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
