@@ -100,6 +100,8 @@ ASSERT_TRUE(result == nullptr);
 }
 
 
+
+
 TEST(FactorySuite, everyOperation) {
   char* test_val[12];
   test_val[0] = "./calculator";
@@ -123,6 +125,20 @@ TEST(FactorySuite, everyOperation) {
   EXPECT_EQ("5+6-7*3/4**3", fac->textify());
 }
 
+TEST(FactorySuite, negative) {
+  char* test_val[4];
+  test_val[0] = "./calculator"; 
+  test_val[1] = "4"; 
+  test_val[2] = "-"; 
+  test_val[3] = "9"; 
+
+  Factory* fac = new Factory();
+  Base* result = fac->parse(test_val, 4);
+
+  EXPECT_EQ("4.000000 - 9.000000", result->stringify());
+  EXPECT_EQ(-5, result->evaluate());
+  EXPECT_EQ("4-9", fac->textify());
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
