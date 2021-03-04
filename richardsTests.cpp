@@ -98,7 +98,18 @@ Factory* fac = new Factory();
 Base* result = fac->parse(test_val, 3); 	
 ASSERT_TRUE(result == nullptr); 
 }
+TEST(FactorySuite, InvalidInput2){
+char* test_val[3];
+test_val[0] = "./calculator";
+test_val[1] = "Wrong";
+test_val[2] = "Input";
+Factory* fact = new Factory();
+Base* result = fact = fact->parse(test_val, 3);
+ASSERT_TRUE(result == nullptr);
 
+
+
+}
 
 
 
