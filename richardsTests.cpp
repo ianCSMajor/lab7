@@ -150,7 +150,17 @@ TEST(FactorySuite, negative) {
   EXPECT_EQ(-5, result->evaluate());
   EXPECT_EQ("4-9", fac->textify());
 }
-
+TEST(FactorySuite, negative) {   
+char* test_val[4];   
+test_val[0] = "./calculator";   
+test_val[1] = "1";   
+test_val[2] = "-";   
+test_val[3] = "8";    
+Factory* fac = new Factory();   
+Base* result = fac->parse(test_val, 4);    
+EXPECT_EQ("1.000000 - 8.000000", result->stringify());   
+EXPECT_EQ(-7, result->evaluate());   
+EXPECT_EQ("1-8", fac->textify()); }
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
