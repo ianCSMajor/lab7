@@ -113,7 +113,31 @@ ASSERT_TRUE(result == nullptr);
 
 }
 
+TEST(FactorySuite, ValidInput) {
+	char* test_val[4];
+	test_val[0] = "./calculator";
+	test_val[1] = "4";
+	test_val[2] = "*";
+	test_val[3] = "7";
+Factory* fact = new Factory();
+Base* result = fact->parse(test_val, 4);
+EXPECTED_NEAR(test -> evaluate(), 28, 0.01);
+}
 
+Test(FactorySuite, ValidInput2) {
+	char* test_val[6];
+	test_val[0] = "./calculator";
+	test_val[1] = "7";
+	test_val[2] = "*";
+	test_val[3] = "4";
+	test_val[4] = "-";
+	test_val[5] = "5";
+	Factory* f = new Factory();
+	Base* test = f->parse(test_val, 6);
+	EXPECT_EQ(test -> stringify(), "7 * 4 - 5");
+
+
+}
 
 TEST(FactorySuite, everyOperation) {
   char* test_val[12];
