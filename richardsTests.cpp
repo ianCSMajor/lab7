@@ -11,6 +11,8 @@
 #include "pow.hpp"
 #include "base.hpp"
 #include "op.hpp"
+#include <string>
+
 using namespace std;
 
 TEST(FactorySuite, addition) {
@@ -104,14 +106,38 @@ test_val[0] = "./calculator";
 test_val[1] = "Wrong";
 test_val[2] = "Input";
 Factory* fact = new Factory();
-Base* result = fact = fact->parse(test_val, 3);
+Base* result = fact->parse(test_val, 3);
 ASSERT_TRUE(result == nullptr);
 
 
 
 }
 
+TEST(FactorySuite, ValidInput) {
+	char* test_val[4];
+	test_val[0] = "./calculator";
+	test_val[1] = "4";
+	test_val[2] = "*";
+	test_val[3] = "7";
+Factory* fact = new Factory();
+Base* result = fact->parse(test_val, 4);
+EXPECTED_NEAR(test -> evaluate(), 28, 0.01);
+}
 
+Test(FactorySuite, ValidInput2) {
+	char* test_val[6];
+	test_val[0] = "./calculator";
+	test_val[1] = "7";
+	test_val[2] = "*";
+	test_val[3] = "4";
+	test_val[4] = "-";
+	test_val[5] = "5";
+	Factory* f = new Factory();
+	Base* test = f->parse(test_val, 6);
+	EXPECT_EQ(test -> stringify(), "7 * 4 - 5");
+
+
+}
 
 TEST(FactorySuite, everyOperation) {
   char* test_val[12];
@@ -150,6 +176,29 @@ TEST(FactorySuite, negative) {
   EXPECT_EQ(-5, result->evaluate());
   EXPECT_EQ("4-9", fac->textify());
 }
+TEST(FactoryTest, InvalidInput) { 	
+char* test_val[6];         
+test_val[0] = "./calculator";         
+test_val[1] = "4";         
+test_val[2] = "*";         
+test_val[3] = "9";         
+test_val[4] = "-";         
+test_val[5] = "6";         
+Factory* f = new Factory();         
+Base* test = f->parse(test_val, 6);         
+EXPECT_NEAR(test -> evaluate(), 30, 0.01); }
+TEST(FactorySuite, negative1) {   
+char* test_val[4];   
+test_val[0] = "./calculator";   
+test_val[1] = "1";   
+test_val[2] = "-";   
+test_val[3] = "8";    
+Factory* fac = new Factory();   
+Base* result = fac->parse(test_val, 4);    
+EXPECT_EQ("1.000000 - 8.000000", result->stringify());   
+EXPECT_EQ(-7, result->evaluate());   
+EXPECT_EQ("1-8", fac->textify()); }
+
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
